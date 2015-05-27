@@ -23,10 +23,10 @@ public class ActivityUpdate extends ActionBarActivity {
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         Toast.makeText(this, "Updating...", Toast.LENGTH_LONG).show();
 
-/*
-        Delay d = new Delay(7000);
-        while(d.delayNotCompleted()){}
-        updateCompleted();*/
+        Delay d = new Delay();
+        d.makeDelay(7000);
+        while(d.notCompleted){}
+        updateCompleted();
     }
 
 

@@ -4,33 +4,33 @@ package ee.sinchukov.menu;
  * Created by vsinchuk on 5/23/2015.
  */
 public class Delay {
-    private volatile boolean notCompleted;
 
+    public volatile boolean notCompleted;
+    private  Thread delayThread;
 
-    Delay(final int delay){
+    Delay(){
         notCompleted =true;
-
-        Thread delayThread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                makeDelay(delay);
-            }
-        });
-        delayThread.start();
-
     }
 
     public boolean delayNotCompleted(){
         return notCompleted;
     }
 
+    public void makeDelay(final int delay){
 
-    void makeDelay(int delay){
-            try {
-                Thread.sleep(10000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        delayThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(delay);
+                    notCompleted = false;
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
-        notCompleted = false;
+        });
+
+        delayThread.start();
+
     }
 }
