@@ -24,11 +24,24 @@ public class ActivityUpdate extends ActionBarActivity {
         Toast.makeText(this, "Updating...", Toast.LENGTH_LONG).show();
 
         Delay d = new Delay();
-        d.makeDelay(7000);
+        startDelayMethod(d,7000);
+
         while(d.notCompleted){}
         updateCompleted();
     }
 
+    public void startDelayMethod(Delay d, int delay){
+        final int milliseconds = delay;
+        final Delay delayObject = d;
+        Thread delayThread= new Thread(new Runnable() {
+            @Override
+            public void run() {
+                delayObject.makeDelay(milliseconds);
+            }
+        });
+
+        delayThread.start();
+    }
 
 
     public void updateCompleted(){

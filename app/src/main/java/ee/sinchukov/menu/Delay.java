@@ -17,7 +17,6 @@ public class Delay {
     }
 
     public void makeDelay(final int delay){
-
         delayThread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -29,8 +28,6 @@ public class Delay {
                 }
             }
         });
-
         delayThread.start();
-
     }
 }
