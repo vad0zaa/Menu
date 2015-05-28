@@ -1,5 +1,7 @@
 package ee.sinchukov.menu;
 
+import android.util.Log;
+
 /**
  * Created by vsinchuk on 5/23/2015.
  */
@@ -10,6 +12,7 @@ public class Delay {
 
     Delay(){
         notCompleted =true;
+        Log.i("my app","Delay class object created");
     }
 
     public boolean delayNotCompleted(){
@@ -21,8 +24,10 @@ public class Delay {
             @Override
             public void run() {
                 try {
+                    Log.i("my app","makeDelay method started");
                     Thread.sleep(delay);
                     notCompleted = false;
+                    Log.i("my app","makeDelay method finished");
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
